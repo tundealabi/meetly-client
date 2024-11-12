@@ -1,96 +1,38 @@
-import { Typography } from '@mui/material';
-import Image from 'next/image';
-import styles from './page.module.css';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
+
+import { Header, JoinWithCode } from '@/components';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <Typography variant="h3">
-            Get started by editing <code>src/app/page.tsx</code>.
-          </Typography>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Stack minHeight="100vh">
+      <Header />
+      <Stack component="main" flex={1} justifyContent="center">
+        <Container maxWidth="md">
+          <Box mb={10} textAlign="center">
+            <Typography
+              component="h1"
+              sx={{ fontSize: { xs: '2.125rem', md: '4rem' }, mb: 2 }}
+            >
+              Video calls and meetings for everyone
+            </Typography>
+            <Typography sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
+              Connect, collaborate, and celebrate from anywhere with Meetly
+            </Typography>
+          </Box>
+          <Stack
+            alignItems="center"
+            direction={{ md: 'row' }}
+            gap={4}
+            justifyContent="center"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <Button startIcon={<VideoCallIcon />} variant="contained">
+              New meeting
+            </Button>
+            <JoinWithCode />
+          </Stack>
+        </Container>
+      </Stack>
+    </Stack>
   );
 }
