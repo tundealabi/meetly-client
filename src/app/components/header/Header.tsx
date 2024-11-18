@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import AvatarMenu from './AvatarMenu';
 
 const timeOptions: Intl.DateTimeFormatOptions = {
   hour: 'numeric',
@@ -55,6 +56,7 @@ const Header = () => {
               {date.toLocaleString('en-US', dateOptions)}
             </Typography>
           </Stack>
+          <AvatarMenu />
         </Toolbar>
       </AppBar>
       <Toolbar />

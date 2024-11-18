@@ -1,9 +1,11 @@
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
 
-import { Header, JoinWithCode } from '@/components';
+import { Header, JoinWithCode, SignInWithGoogle } from '@/components';
+import { getSession } from '@/helpers';
 
-export default function Home() {
+export default async function Home() {
+  const session = await getSession();
   return (
     <Stack minHeight="100vh">
       <Header />
@@ -26,9 +28,13 @@ export default function Home() {
             gap={4}
             justifyContent="center"
           >
-            <Button startIcon={<VideoCallIcon />} variant="contained">
-              New meeting
-            </Button>
+            {session ? (
+              <Button startIcon={<VideoCallIcon />} variant="contained">
+                New meeting
+              </Button>
+            ) : (
+              <SignInWithGoogle />
+            )}
             <JoinWithCode />
           </Stack>
         </Container>

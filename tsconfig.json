@@ -21,6 +21,9 @@
     "paths": {
       "@/components": ["./src/app/components"],
       "@/components/*": ["./src/app/components/*"],
+      "@/helpers": ["./src/app/helpers"],
+      "@/libs": ["./src/app/libs"],
+      "@/types": ["./src/app/types"],
       "@/*": ["./src/*"]
     }
   },
