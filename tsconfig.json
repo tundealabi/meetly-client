@@ -21,8 +21,11 @@
     "paths": {
       "@/components": ["./src/app/components"],
       "@/components/*": ["./src/app/components/*"],
+      "@/constants": ["./src/app/constants"],
       "@/helpers": ["./src/app/helpers"],
       "@/libs": ["./src/app/libs"],
+      "@/providers": ["./src/app/providers"],
+      "@/services": ["./src/app/services"],
       "@/types": ["./src/app/types"],
       "@/*": ["./src/*"]
     }

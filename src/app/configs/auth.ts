@@ -39,7 +39,11 @@ export const authConfig = {
       };
     },
   },
+  jwt: {
+    maxAge: 29 * 24 * 60 * 60, // 29 days
+  },
   pages: {
     error: '/',
+    signOut: '/',
   },
 } satisfies NextAuthOptions;

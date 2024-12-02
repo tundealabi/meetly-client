@@ -27,3 +27,21 @@ export type User = {
   profilePicture: string;
   username: string;
 };
+
+//  ROOM
+export type RoomInfo = {
+  createdBy: { _id: string; username: string };
+  roomName: string;
+};
+export type Room = RoomInfo & {
+  token: string;
+  uid: number;
+  userId: string;
+  username: string;
+};
+export type CreatedRoom = Pick<RoomInfo, 'roomName'>;
+export type JoinRoomOptions = {
+  channel: string;
+  token: string;
+  uid: number;
+};
