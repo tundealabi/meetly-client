@@ -1,9 +1,11 @@
 'use client';
 
 import { Button, Stack, TextField } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const JoinWithCode = () => {
+  const router = useRouter();
   const [code, setCode] = useState('');
   return (
     <Stack direction="row" gap={4}>
@@ -22,7 +24,11 @@ const JoinWithCode = () => {
         value={code}
         variant="outlined"
       />
-      <Button disabled={!code} sx={{ '&.Mui-disabled': { color: 'grey' } }}>
+      <Button
+        disabled={!code}
+        onClick={() => router.push(`/${code}`)}
+        sx={{ '&.Mui-disabled': { color: 'grey' } }}
+      >
         Join
       </Button>
     </Stack>

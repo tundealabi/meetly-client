@@ -1,16 +1,15 @@
 // 'use client';
 
-import { JoinRoomOptions } from '@/types';
+import { JoinRoomOptions, RoomInfoType } from '@/types';
 import {
   CallEnd,
-  KeyboardArrowUp,
   Mic,
   MicOff,
   PhoneAndroidRounded,
   Videocam,
   VideocamOff,
 } from '@mui/icons-material';
-import { Box, ButtonGroup, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import {
   LocalUser,
   useLocalMicrophoneTrack,
@@ -21,6 +20,7 @@ import {
   RemoteUser,
 } from 'agora-rtc-react';
 import { FC, useState } from 'react';
+import InfoDialog from './InfoDialog';
 // import { createClient } from 'agora-rtm-react';
 
 type MeetingViewProps = {
@@ -49,6 +49,7 @@ const MeetingView: FC<MeetingViewProps> = ({
 
   const [micOn, setMic] = useState(false);
   const [cameraOn, setCamera] = useState(false);
+  const [infoType, setInfoType] = useState<RoomInfoType>(null);
   const { localMicrophoneTrack } = useLocalMicrophoneTrack(micOn);
   const { localCameraTrack } = useLocalCameraTrack(cameraOn);
 
@@ -62,98 +63,89 @@ const MeetingView: FC<MeetingViewProps> = ({
   const toggleMicrophone = () => setMic((prev) => !prev);
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        px: { xs: 2, lg: 10 },
-      }}
-    >
-      <Box sx={{ flex: 1, py: 4 }}>
-        <Box
-          sx={{
-            border: '1px solid red',
-            height: '100%',
-            position: 'relative',
-            width: '100%',
-          }}
-        >
-          <LocalUser
-            audioTrack={localMicrophoneTrack}
-            cameraOn={cameraOn}
-            micOn={micOn}
-            playAudio={false}
-            // playVideo={true}
-            videoTrack={localCameraTrack}
-            cover="https://images.pexels.com/photos/28987374/pexels-photo-28987374/free-photo-of-monochrome-view-of-historic-riga-architecture.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          />
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100vh',
+          px: { xs: 2, lg: 10 },
+        }}
+      >
+        <Box sx={{ flex: 1, py: 4 }}>
           <Box
             sx={{
-              alignItems: 'center',
-              bgcolor: 'gray',
-              borderRadius: '50%',
-              display: 'flex',
-              justifyContent: 'center',
-              p: 0.6,
-              position: 'absolute',
-              right: 4,
-              top: 4,
-              zIndex: 2,
+              border: '1px solid red',
+              height: '100%',
+              position: 'relative',
+              width: '100%',
             }}
           >
-            {micOn ? <Mic color="secondary" /> : <MicOff color="secondary" />}
-          </Box>
-          <Box sx={{ bottom: 4, left: 4, position: 'absolute', zIndex: 2 }}>
-            <Typography noWrap>{username}</Typography>
-          </Box>
-        </Box>
-      </Box>
-
-      <Box>
-        {remoteUsers.map(async (user) => {
-          // const { name } = await client.getUserAttributes(user.uid.toString());
-          return (
+            <LocalUser
+              audioTrack={localMicrophoneTrack}
+              cameraOn={cameraOn}
+              micOn={micOn}
+              playAudio={false}
+              // playVideo={true}
+              videoTrack={localCameraTrack}
+              cover="https://images.pexels.com/photos/28987374/pexels-photo-28987374/free-photo-of-monochrome-view-of-historic-riga-architecture.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            />
             <Box
-              key={user.uid}
               sx={{
-                border: '1px solid green',
-                height: 300,
-                position: 'relative',
-                width: 300,
+                alignItems: 'center',
+                bgcolor: 'gray',
+                borderRadius: '50%',
+                display: 'flex',
+                justifyContent: 'center',
+                p: 0.6,
+                position: 'absolute',
+                right: 4,
+                top: 4,
+                zIndex: 2,
               }}
             >
-              <RemoteUser
-                cover="https://preview.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-pm1cary85vjb1.jpg?width=755&format=pjpg&auto=webp&s=cb9b202f3307b50dc79ebcf33cb6c1277aee88b9"
-                user={user}
-              >
-                <samp className="user-name">{user.uid}</samp>
-              </RemoteUser>
+              {micOn ? <Mic color="secondary" /> : <MicOff color="secondary" />}
             </Box>
-          );
-        })}
-      </Box>
+            <Box sx={{ bottom: 4, left: 4, position: 'absolute', zIndex: 2 }}>
+              <Typography noWrap>{username}</Typography>
+            </Box>
+          </Box>
+        </Box>
 
-      <Box sx={{ border: '1px solid blue', display: 'flex', width: '100%' }}>
-        <Box
-          sx={{
-            border: '1px solid green',
-            display: 'flex',
-            flex: 1,
-            justifyContent: 'center',
-          }}
-        >
-          <ButtonGroup>
-            <IconButton>
-              <KeyboardArrowUp color="secondary" />
-            </IconButton>
+        <Box>
+          {remoteUsers.map((user) => {
+            return (
+              <Box
+                key={user.uid}
+                sx={{
+                  border: '1px solid green',
+                  height: 300,
+                  position: 'relative',
+                  width: 300,
+                }}
+              >
+                <RemoteUser
+                  cover="https://preview.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-pm1cary85vjb1.jpg?width=755&format=pjpg&auto=webp&s=cb9b202f3307b50dc79ebcf33cb6c1277aee88b9"
+                  user={user}
+                >
+                  <samp className="user-name">{user.uid}</samp>
+                </RemoteUser>
+              </Box>
+            );
+          })}
+        </Box>
+
+        <Box sx={{ border: '1px solid blue', display: 'flex', width: '100%' }}>
+          <Box
+            sx={{
+              border: '1px solid green',
+              display: 'flex',
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
             <IconButton onClick={toggleMicrophone}>
               {micOn ? <Mic color="secondary" /> : <MicOff color="secondary" />}
-            </IconButton>
-          </ButtonGroup>
-          <ButtonGroup>
-            <IconButton>
-              <KeyboardArrowUp color="secondary" />
             </IconButton>
             <IconButton onClick={toggleCamera}>
               {cameraOn ? (
@@ -162,18 +154,25 @@ const MeetingView: FC<MeetingViewProps> = ({
                 <VideocamOff color="secondary" />
               )}
             </IconButton>
-          </ButtonGroup>
-          <IconButton>
-            <CallEnd color="secondary" />
-          </IconButton>
-        </Box>
-        <Box>
-          <IconButton>
-            <PhoneAndroidRounded color="secondary" />
-          </IconButton>
+            <IconButton>
+              <CallEnd color="secondary" />
+            </IconButton>
+          </Box>
+          <Box>
+            <IconButton onClick={() => setInfoType('details')}>
+              <PhoneAndroidRounded color="secondary" />
+            </IconButton>
+            <IconButton onClick={() => setInfoType('people')}>
+              <PhoneAndroidRounded color="primary" />
+            </IconButton>
+            <IconButton onClick={() => setInfoType('chat')}>
+              <PhoneAndroidRounded color="success" />
+            </IconButton>
+          </Box>
         </Box>
       </Box>
-    </Box>
+      <InfoDialog handleClose={() => setInfoType(null)} type={infoType} />
+    </>
   );
 };
 

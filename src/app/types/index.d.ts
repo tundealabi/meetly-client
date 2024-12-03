@@ -45,3 +45,5 @@ export type JoinRoomOptions = {
   token: string;
   uid: number;
 };
+
+export type RoomInfoType = 'details' | 'people' | 'chat' | null;

@@ -26,9 +26,10 @@ const CreateMeeting = () => {
           },
         }
       );
-      setIsLoading(false);
       if (result.state === 'success') {
         router.push(`/${result.data.roomName}`);
+      } else {
+        setIsLoading(false);
       }
     }
   };
