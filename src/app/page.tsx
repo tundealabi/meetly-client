@@ -4,7 +4,7 @@ import {
   CreateMeeting,
   Header,
   JoinWithCode,
-  SignInWithGoogle,
+  SignInWithGoogle
 } from '@/components';
 import { getSession } from '@/helpers';
 

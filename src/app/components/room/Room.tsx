@@ -7,7 +7,7 @@ type RoomProps = {
 };
 
 const AgoraProvider = dynamic(() => import('../../providers/AgoraProvider'), {
-  ssr: false,
+  ssr: false
 });
 const MeetingView = dynamic(
   () => import('../meeting-view').then((module) => module.MeetingView),
@@ -19,7 +19,6 @@ const Room: FC<RoomProps> = ({ data, roomId }) => {
   const [state, setState] = useState(() => data);
 
   const handleSetState = (payload: RoomData) => setState(payload);
-  console.log('state', state);
   return (
     <AgoraProvider>
       {state ? (
@@ -27,7 +26,7 @@ const Room: FC<RoomProps> = ({ data, roomId }) => {
           joinRoomOptions={{
             channel: state.roomName,
             token: state.token,
-            uid: state.uid,
+            uid: state.uid
           }}
           username={state.username}
         />

@@ -3,7 +3,7 @@ import { Mic, MicOff, Videocam, VideocamOff } from '@mui/icons-material';
 
 import AgoraRTC, {
   ICameraVideoTrack,
-  IMicrophoneAudioTrack,
+  IMicrophoneAudioTrack
 } from 'agora-rtc-react';
 
 import { FC, useEffect, useState } from 'react';
@@ -34,7 +34,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
     const initTracks = async () => {
       const [video, audio] = await Promise.all([
         AgoraRTC.createCameraVideoTrack(),
-        AgoraRTC.createMicrophoneAudioTrack(),
+        AgoraRTC.createMicrophoneAudioTrack()
       ]);
       setVideoTrack(video);
       setAudioTrack(audio);
@@ -92,7 +92,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
           flex: 1,
           flexDirection: 'column',
           justifyContent: 'center',
-          paddingX: { xs: 2, lg: 16 },
+          paddingX: { xs: 2, lg: 16 }
         }}
       >
         <Box
@@ -100,7 +100,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
             alignItems: 'center',
             display: 'flex',
             flexDirection: { xs: 'column', lg: 'row' },
-            justifyContent: 'space-between',
+            justifyContent: 'space-between'
           }}
         >
           {/* MEDIA */}
@@ -109,7 +109,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
               border: '2px solid grey',
               flexBasis: '60%',
               height: 400,
-              position: 'relative',
+              position: 'relative'
             }}
           >
             {/* Render video preview */}
@@ -131,14 +131,14 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
                 justifyContent: 'center',
                 left: 0,
                 position: 'absolute',
-                width: '100%',
+                width: '100%'
               }}
             >
               <Box
                 sx={{
                   alignItems: 'center',
                   display: 'flex',
-                  gap: 3,
+                  gap: 3
                 }}
               >
                 <IconButton
@@ -172,7 +172,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
               display: 'flex',
               flexBasis: '30%',
               flexDirection: 'column',
-              gap: 4,
+              gap: 4
             }}
           >
             <Typography>What&apos;s your name ?</Typography>
@@ -180,15 +180,15 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
               <TextField
                 id="outlined-basic"
                 slotProps={{
-                  htmlInput: { maxLength: USERNAME_LENGTH },
+                  htmlInput: { maxLength: USERNAME_LENGTH }
                 }}
                 label="Your name"
                 onChange={(ev) => setUsername(ev.target.value)}
                 sx={{
                   border: '1px solid #635959',
                   '& .MuiInputBase-input': {
-                    color: '#fff',
-                  },
+                    color: '#fff'
+                  }
                 }}
                 value={username}
                 variant="outlined"
@@ -203,7 +203,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
               onClick={handleJoinMeeting}
               sx={{
                 borderRadius: '9999px',
-                '&.Mui-disabled': { backgroundColor: '#404040' },
+                '&.Mui-disabled': { backgroundColor: '#404040' }
               }}
               variant="contained"
             >

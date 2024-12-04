@@ -1,0 +1,7 @@
+echo '🏗️👷 Linting and prettifying your project before committing'
+
+
+npx lint-staged
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ Committing this now. ✅✅✅✅'

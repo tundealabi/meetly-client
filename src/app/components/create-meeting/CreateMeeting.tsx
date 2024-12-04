@@ -22,8 +22,8 @@ const CreateMeeting = () => {
         {},
         {
           headers: {
-            Authorization: `Bearer ${session.data?.token.accessToken}`,
-          },
+            Authorization: `Bearer ${session.data?.token.accessToken}`
+          }
         }
       );
       if (result.state === 'success') {

@@ -8,8 +8,8 @@ export const authConfig = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+    })
   ], // rest of your config
   callbacks: {
     async signIn({ account, user }) {
@@ -35,15 +35,15 @@ export const authConfig = {
       return {
         expires: '',
         user: token.user,
-        token: token.token,
+        token: token.token
       };
-    },
+    }
   },
   jwt: {
-    maxAge: 29 * 24 * 60 * 60, // 29 days
+    maxAge: 29 * 24 * 60 * 60 // 29 days
   },
   pages: {
     error: '/',
-    signOut: '/',
-  },
+    signOut: '/'
+  }
 } satisfies NextAuthOptions;

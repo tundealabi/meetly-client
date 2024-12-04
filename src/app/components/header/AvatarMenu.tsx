@@ -6,7 +6,7 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Tooltip,
+  Tooltip
 } from '@mui/material';
 import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
@@ -50,7 +50,7 @@ const AvatarMenu = () => {
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          'aria-labelledby': 'basic-button'
         }}
       >
         <MenuItem onClick={handleSignOut}>Logout</MenuItem>

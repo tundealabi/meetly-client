@@ -15,11 +15,11 @@ const JoinWithCode = () => {
         size="small"
         sx={{
           '& .MuiInputBase-root': {
-            color: 'whitesmoke',
+            color: 'whitesmoke'
           },
           '& fieldset': {
-            borderColor: 'GrayText',
-          },
+            borderColor: 'GrayText'
+          }
         }}
         value={code}
         variant="outlined"

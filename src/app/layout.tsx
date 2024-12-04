@@ -10,11 +10,11 @@ import { getSession } from './helpers';
 
 export const metadata: Metadata = {
   title: 'Meetly',
-  description: 'Bringing People Together, One Meeting at a Time',
+  description: 'Bringing People Together, One Meeting at a Time'
 };
 
 export default async function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {

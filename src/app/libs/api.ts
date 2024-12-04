@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { ServerApiResponse } from '../types';
 
 export const SERVER_API_INSTANCE = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_SERVER_BASE_URL!,
+  baseURL: process.env.NEXT_PUBLIC_SERVER_BASE_URL!
   // baseURL: 'http://localhost:8095/api/v1',
 });
 
@@ -12,7 +12,7 @@ const getRequest = async <T>(
 ): Promise<ServerApiResponse<T>> => {
   try {
     const response = await SERVER_API_INSTANCE.get<ServerApiResponse<T>>(url, {
-      ...config,
+      ...config
     });
     return response.data;
   } catch (err) {
@@ -25,7 +25,7 @@ const getRequest = async <T>(
     return {
       errors: null,
       message: 'An unknown error occurred',
-      state: 'error',
+      state: 'error'
     };
   }
 };
@@ -51,7 +51,7 @@ const postRequest = async <T>(
     return {
       errors: null,
       message: 'An unknown error occurred',
-      state: 'error',
+      state: 'error'
     };
   }
 };

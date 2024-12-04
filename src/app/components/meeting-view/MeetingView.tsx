@@ -7,7 +7,7 @@ import {
   MicOff,
   PhoneAndroidRounded,
   Videocam,
-  VideocamOff,
+  VideocamOff
 } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 import {
@@ -17,7 +17,7 @@ import {
   useJoin,
   usePublish,
   useRemoteUsers,
-  RemoteUser,
+  RemoteUser
 } from 'agora-rtc-react';
 import { FC, useState } from 'react';
 import InfoDialog from './InfoDialog';
@@ -33,9 +33,9 @@ type MeetingViewProps = {
 
 const MeetingView: FC<MeetingViewProps> = ({
   joinRoomOptions: { channel, token, uid },
-  username,
+  username
 }) => {
-  console.log(channel, token, uid);
+  console.debug(channel, token, uid);
   // const client = useClient();
 
   // client.login({ uid: uid.toString(), token });
@@ -44,7 +44,7 @@ const MeetingView: FC<MeetingViewProps> = ({
     appid: process.env.NEXT_PUBLIC_AGORA_APP_ID!,
     channel,
     uid,
-    token,
+    token
   });
 
   const [micOn, setMic] = useState(false);
@@ -57,7 +57,7 @@ const MeetingView: FC<MeetingViewProps> = ({
 
   const remoteUsers = useRemoteUsers();
 
-  console.log('remoteUsers', remoteUsers);
+  console.debug('remoteUsers', remoteUsers);
 
   const toggleCamera = () => setCamera((prev) => !prev);
   const toggleMicrophone = () => setMic((prev) => !prev);
@@ -69,7 +69,7 @@ const MeetingView: FC<MeetingViewProps> = ({
           display: 'flex',
           flexDirection: 'column',
           height: '100vh',
-          px: { xs: 2, lg: 10 },
+          px: { xs: 2, lg: 10 }
         }}
       >
         <Box sx={{ flex: 1, py: 4 }}>
@@ -78,7 +78,7 @@ const MeetingView: FC<MeetingViewProps> = ({
               border: '1px solid red',
               height: '100%',
               position: 'relative',
-              width: '100%',
+              width: '100%'
             }}
           >
             <LocalUser
@@ -101,7 +101,7 @@ const MeetingView: FC<MeetingViewProps> = ({
                 position: 'absolute',
                 right: 4,
                 top: 4,
-                zIndex: 2,
+                zIndex: 2
               }}
             >
               {micOn ? <Mic color="secondary" /> : <MicOff color="secondary" />}
@@ -121,7 +121,7 @@ const MeetingView: FC<MeetingViewProps> = ({
                   border: '1px solid green',
                   height: 300,
                   position: 'relative',
-                  width: 300,
+                  width: 300
                 }}
               >
                 <RemoteUser
@@ -141,7 +141,7 @@ const MeetingView: FC<MeetingViewProps> = ({
               border: '1px solid green',
               display: 'flex',
               flex: 1,
-              justifyContent: 'center',
+              justifyContent: 'center'
             }}
           >
             <IconButton onClick={toggleMicrophone}>

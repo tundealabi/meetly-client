@@ -10,7 +10,7 @@ type AuthProviderProps = {
 
 const AuthProvider: FC<PropsWithChildren<AuthProviderProps>> = ({
   children,
-  session,
+  session
 }) => {
   return <SessionProvider session={session}>{children}</SessionProvider>;
 };

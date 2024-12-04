@@ -6,15 +6,15 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         sx: {
-          textTransform: 'none',
-        },
-      },
-    },
+          textTransform: 'none'
+        }
+      }
+    }
   },
   cssVariables: true,
   typography: {
-    fontFamily: 'var(--font-roboto)',
-  },
+    fontFamily: 'var(--font-roboto)'
+  }
 });
 
 export default theme;

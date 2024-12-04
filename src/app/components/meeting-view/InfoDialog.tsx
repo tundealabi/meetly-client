@@ -29,7 +29,7 @@ const InfoDialog: FC<InfoDialogProps> = ({ handleClose, type }) => {
           position: 'absolute',
           right: 8,
           top: 8,
-          color: theme.palette.grey[500],
+          color: theme.palette.grey[500]
         })}
         title="close"
       >

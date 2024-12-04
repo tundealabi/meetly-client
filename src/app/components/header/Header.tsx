@@ -5,7 +5,7 @@ import {
   Link as MuiLink,
   Stack,
   Toolbar,
-  Typography,
+  Typography
 } from '@mui/material';
 import Image from 'next/image';
 import NextLink from 'next/link';
@@ -14,13 +14,13 @@ import AvatarMenu from './AvatarMenu';
 const timeOptions: Intl.DateTimeFormatOptions = {
   hour: 'numeric',
   minute: 'numeric',
-  hour12: true,
+  hour12: true
 };
 
 const dateOptions: Intl.DateTimeFormatOptions = {
   weekday: 'short',
   month: 'short',
-  day: 'numeric',
+  day: 'numeric'
 };
 
 const Header = () => {

@@ -1,6 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier"],
   "rules": {
-    "no-console": "warn"
+    "no-console": [
+      "error",
+      {
+        "allow": ["debug", "error"]
+      }
+    ]
   }
 }

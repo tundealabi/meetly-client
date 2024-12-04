@@ -4,7 +4,7 @@ import { getRoomInfo, joinRoom } from '@/services';
 import { notFound } from 'next/navigation';
 
 export default async function RoomPage({
-  params,
+  params
 }: {
   params: Promise<{ roomId: string }>;
 }) {
