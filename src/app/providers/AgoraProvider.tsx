@@ -1,14 +1,20 @@
 'use client';
 
-import AgoraRTC, { AgoraRTCProvider } from 'agora-rtc-react';
+import AgoraRTC, {
+  AgoraRTCProvider,
+  AgoraRTCScreenShareProvider
+} from 'agora-rtc-react';
 import { FC, PropsWithChildren } from 'react';
+
+const client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' }) as never;
+const clientTwo = AgoraRTC.createClient({ mode: 'p2p', codec: 'vp8' }) as never;
 
 const AgoraProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <AgoraRTCProvider
-      client={AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' }) as never}
-    >
-      {children}
+    <AgoraRTCProvider client={client}>
+      <AgoraRTCScreenShareProvider client={clientTwo}>
+        {children}
+      </AgoraRTCScreenShareProvider>
     </AgoraRTCProvider>
   );
 };
