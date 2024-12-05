@@ -17,11 +17,11 @@ const SignInWithGoogle = () => {
         '&:hover': {
           backgroundColor: 'rgba(21, 232, 214, 0.592)',
          },
-         padding: '2px 24px',  
-        fontSize: '1rem',   
-        minWidth: '200px',    
-        minHeight: '42px',     
-        borderRadius: '8px',   
+        //  padding: '2px 18px',  
+        // fontSize: '1rem',   
+        // minWidth: '200px',    
+        // minHeight: '42px',     
+        // borderRadius: '8px',   
    
 
       }}

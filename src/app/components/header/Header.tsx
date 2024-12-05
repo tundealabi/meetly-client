@@ -1,4 +1,3 @@
-import CircleIcon from '@mui/icons-material/Circle';
 import {
   AppBar,
   Box,
@@ -35,7 +34,7 @@ const Header = () => {
             href="/"
             underline="none"
             // sx={{ color: 'white' }}
-            sx={{color: "#15e8d8"}}
+            sx={{ color: '#15e8d8' }}
           >
             <Stack alignItems="center" direction="row" spacing={0}>
               <Image
@@ -46,15 +45,30 @@ const Header = () => {
                 style={{ borderRadius: 10 }}
                 width={40}
               />
-              <Typography component="span" color="#15e8d8">Meetly</Typography>
+              <Typography component="span" color="#15e8d8">
+                Meetly
+              </Typography>
             </Stack>
           </MuiLink>
-          <Stack alignItems="center" direction="row" spacing={0.5} color="#15e8d8">
-            <Typography component="span">
-              {date.toLocaleString('en-US', timeOptions)}
+          <Stack
+            alignItems="center"
+            direction="row"
+            spacing={0.5}
+            color="#15e8d8"
+          >
+            <Typography
+              component="span"
+              fontStyle="italic"
+              sx={{ fontSize: { xs: '0.7rem', md: '1rem' } }}
+            >
+              {date.toLocaleString('en-US', timeOptions)},
             </Typography>
-            <CircleIcon sx={{ fontSize: 6 }} />
-            <Typography component="span">
+
+            <Typography
+              component="span"
+              fontStyle="italic"
+              sx={{ fontSize: { xs: '0.7em', md: '1rem' } }}
+            >
               {date.toLocaleString('en-US', dateOptions)}
             </Typography>
           </Stack>
