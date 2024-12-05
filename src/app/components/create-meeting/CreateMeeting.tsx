@@ -41,6 +41,7 @@ const CreateMeeting = () => {
       startIcon={<VideoCallIcon />}
       sx={{ '&.Mui-disabled': { backgroundColor: '#404040' } }}
       variant="contained"
+    
     >
       New meeting
     </LoadingButton>
