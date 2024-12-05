@@ -1,4 +1,4 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 
 import {
@@ -14,91 +14,105 @@ export default async function Home() {
   return (
     <Stack minHeight="100vh">
       <Header />
-      <Stack
+      <Grid
+        container
         component="main"
         flex={1}
-        justifyContent="space-between"
+        justifyContent="center"
+        alignItems="center"
         mt="4rem"
         mx="auto"
-        // sx={{
-        //   direction: { xs: 'column', md: 'row' }
-        //   // mx: { xs: 'none', md: 'auto' }
-        // }}
-        direction="row"
+        spacing={4}
+        sx={{
+          maxWidth: '1200px',
+          px: { xs: 2, md: 4 }
+        }}
       >
-        <Container sx={{ maxWidth: { xs: 'md', md: 'sm' } }}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          order={{ xs: 1, md: 2 }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
           <Box
-            mb={4}
-            display="flex"
-            gap="0.4rem"
+            width="100%"
+            maxWidth={500}
             sx={{
-              justifyContent: { xs: 'center', md: 'left' },
-              alignItems: 'center'
+              px: { xs: 2, md: 0 }
             }}
-          >
-            <Image
-              alt="logo"
-              height={32}
-              // src="/web-app-manifest-192x192.png"
-              src="/image/png/color-video.png"
-              style={{ borderRadius: 10 }}
-              width={32}
-            />
-
-            <Typography
-              component="h3"
-              sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }}
-              color="#5f6368"
-            >
-              Meetly
-            </Typography>
-          </Box>
-          <Box mb={10} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-            <Typography
-              component="h6"
-              sx={{
-                fontSize: { xs: '2.125rem', md: '4rem' },
-                mb: 2,
-                lineHeight: { xs: '1.2', md: '1.4' }
-              }}
-              fontWeight="600"
-            >
-              Video calls and meetings for everyone, anywhere
-            </Typography>
-            <Typography sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
-              Connect, collaborate, and celebrate with friends, family and
-              colleagues from anywhere with Meetly
-            </Typography>
-          </Box>
-          <Stack
-            sx={{
-              alignItems: { xs: 'center', md: 'left' },
-              justifyContent: { xs: 'center', md: 'left' }
-            }}
-            direction={{ md: 'row' }}
-            gap={4}
-          >
-            {session ? <CreateMeeting /> : <SignInWithGoogle />}
-            <JoinWithCode />
-          </Stack>
-        </Container>
-        <Container maxWidth="md">
-          <Box
-            width={600}
-            justifyContent="center"
-            alignItems="center"
-            sx={{ display: { xs: 'hide', md: 'flex' } }}
           >
             <Image
               alt="hero-img"
               height={600}
               src="/image/meetly-vector.png"
-              style={{ borderRadius: 10 }}
+              style={{ borderRadius: 10, maxWidth: '100%', height: 'auto' }}
               width={600}
             />
           </Box>
-        </Container>
-      </Stack>
+        </Grid>
+
+        <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
+          <Container sx={{ maxWidth: '100%' }}>
+            <Box
+              mb={4}
+              display="flex"
+              gap="0.4rem"
+              sx={{
+                justifyContent: { xs: 'center', md: 'flex-start' },
+                alignItems: 'center'
+              }}
+            >
+              <Image
+                alt="logo"
+                height={32}
+                src="/image/png/color-video.png"
+                style={{ borderRadius: 10 }}
+                width={32}
+              />
+              <Typography
+                component="h3"
+                sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }}
+                color="#5f6368"
+              >
+                Meetly
+              </Typography>
+            </Box>
+            <Box mb={10} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+              <Typography
+                component="h6"
+                sx={{
+                  fontSize: { xs: '2.125rem', md: '3rem', lg: '4rem' },
+                  mb: 2,
+                  lineHeight: { xs: '1.2', md: '1.4' }
+                }}
+                fontWeight="600"
+              >
+                Video calls and meetings for everyone, anywhere
+              </Typography>
+              <Typography sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
+                Connect, collaborate, and celebrate with friends, family, and
+                colleagues from anywhere with Meetly
+              </Typography>
+            </Box>
+            <Stack
+              sx={{
+                alignItems: { xs: 'center', md: 'flex-start' },
+                justifyContent: { xs: 'center', md: 'flex-start' }
+              }}
+              direction={{ xs: 'column', md: 'row' }}
+              gap={4}
+            >
+              {session ? <CreateMeeting /> : <SignInWithGoogle />}
+              <JoinWithCode />
+            </Stack>
+          </Container>
+        </Grid>
+      </Grid>
     </Stack>
   );
 }
