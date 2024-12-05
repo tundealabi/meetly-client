@@ -1,4 +1,5 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
+import Image from 'next/image';
 
 import {
   CreateMeeting,
@@ -13,24 +14,48 @@ export default async function Home() {
   return (
     <Stack minHeight="100vh">
       <Header />
-      <Stack component="main" flex={1} justifyContent="center">
-        <Container maxWidth="md">
-          <Box mb={10} textAlign="center">
+      <Stack component="main" flex={1} justifyContent="center" border="2px solid red" >
+        <Container maxWidth="md"  >
+          <Box mb={4}  display="flex" gap="0.4rem" sx={{ justifyContent: {xs: "center", md: "left"}, alignItems: "center" }} >
+             <Image
+                alt="logo"
+                height={32}
+                // src="/web-app-manifest-192x192.png"
+              src="/image/png/color-video.png"             
+                style={{ borderRadius: 10 }}
+                width={32}
+            />
+            
             <Typography
-              component="h1"
-              sx={{ fontSize: { xs: '2.125rem', md: '4rem' }, mb: 2 }}
+                component="h3"
+                sx={{ fontSize: { xs: '1.5rem', md: '2rem' }, }}
+                color="#5f6368"
+              >
+              Meetly
+              </Typography>
+          </Box>
+          <Box mb={10} sx={{ textAlign: {xs: "center", md: "left"},}} >
+            <Typography
+              component="h6"
+              sx={{ fontSize: { xs: '2.125rem', md: '4rem' }, mb: 2, lineHeight: {xs:"1,3", md: "1.5"}, }}
+              fontWeight="600"
+            
+             
             >
-              Video calls and meetings for everyone
+              Video calls and meetings for everyone, anywhere
             </Typography>
             <Typography sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}>
-              Connect, collaborate, and celebrate from anywhere with Meetly
+              Connect, collaborate, and celebrate with friends, family and colleagues from anywhere with Meetly
+              
+
             </Typography>
           </Box>
           <Stack
-            alignItems="center"
+          
+            sx={{alignItems: {xs: "center", md: "left"}, justifyContent: {xs: "center", md: "left"},}}
             direction={{ md: 'row' }}
             gap={4}
-            justifyContent="center"
+    
           >
             {session ? <CreateMeeting /> : <SignInWithGoogle />}
             <JoinWithCode />
