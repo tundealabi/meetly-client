@@ -2,6 +2,33 @@
 # yarn lockfile v1
 
 
+"@agora-js/media@4.22.2":
+  version "4.22.2"
+  resolved "https://registry.yarnpkg.com/@agora-js/media/-/media-4.22.2.tgz#9c6bcc06438f01ee5f2ec73a3bb40dbd93bf5a6f"
+  integrity sha512-Zb9fO1XpPrHasaPYUAPSPRzRuMgA0es7siMlDGXzxV6SgRLpMO9LrFnjsoWVtX664cEXM5TcitMuJHA133GDiA==
+  dependencies:
+    "@agora-js/report" "4.22.2"
+    "@agora-js/shared" "4.22.2"
+    agora-rte-extension "^1.2.4"
+    axios "^1.7.7"
+    webrtc-adapter "8.2.0"
+
+"@agora-js/report@4.22.2":
+  version "4.22.2"
+  resolved "https://registry.yarnpkg.com/@agora-js/report/-/report-4.22.2.tgz#d18e228b5e60bee11201835c0b49d406633bfcb8"
+  integrity sha512-7C6RjRCqif9bqzjFf1bf704GCimEXBMMEmGrR1M/qyWBNqW8CrZA7vLxuCg99hd0uICQeYp2kMX6uYYwNQDyUA==
+  dependencies:
+    "@agora-js/shared" "4.22.2"
+    axios "^1.7.7"
+
+"@agora-js/shared@4.22.2":
+  version "4.22.2"
+  resolved "https://registry.yarnpkg.com/@agora-js/shared/-/shared-4.22.2.tgz#b26813afc9494e62fd0a0188eab665d5d6cacae6"
+  integrity sha512-8LNJlLCpSKFOfh9Y1lgP7PF6oVbXozg38UMITjUY5pCDxBptThVozf1clwekY919uDkgSLx7F7hS3bRZE0sB/w==
+  dependencies:
+    axios "^1.7.7"
+    ua-parser-js "^0.7.34"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.25.9":
   version "7.26.2"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.26.2.tgz#4b5fab97d33338eff916235055f0ebc21e573a85"
@@ -838,10 +865,45 @@ acorn@^8.9.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.14.0.tgz#063e2c70cac5fb4f6467f0b11152e04c682795b0"
   integrity sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==
 
+agora-react-uikit@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/agora-react-uikit/-/agora-react-uikit-1.2.0.tgz#0b61bef2836cb6163cac7d31529a3c64701fee2e"
+  integrity sha512-+bqYsktLs3CV0OFQyD+uIxqlEMPMLprw446MnOQA4BWr+EFJBO3zA+J1ogXHOgJ+dSRegbD+SA8Ehe2et6K/ew==
+  dependencies:
+    agora-rtc-react "^1.1.3"
+    agora-rtm-react "^1.1.2"
+
+agora-rtc-react@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/agora-rtc-react/-/agora-rtc-react-1.1.3.tgz#616527fe453b95fdd8f6e39ccba86496ecdbb686"
+  integrity sha512-AgmDoeLoL3xC7u60lTehHi1GvHsP8l09CX3bn+NyHx6E0Dmbbxdtqkn+YrlakWa4IYOAn0d/9oKvuGrNtUiOpA==
+  dependencies:
+    agora-rtc-sdk-ng "^4.3.0"
+
 agora-rtc-react@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/agora-rtc-react/-/agora-rtc-react-2.3.0.tgz#714239d45d8368d4a7d3cce64d5969d09b49ecf3"
   integrity sha512-6D0uvXoZFlwQ/DClceJ1PUCpaHv3ebfMKFOnU0DXbiLpeMeYWM2uyuvfrcDjg4fGf033wPEzXVJHS0wx/miyJw==
+
+agora-rtc-sdk-ng@^4.3.0:
+  version "4.22.2"
+  resolved "https://registry.yarnpkg.com/agora-rtc-sdk-ng/-/agora-rtc-sdk-ng-4.22.2.tgz#d3f571d8e24517af5f77bea3cb4687d204cd4656"
+  integrity sha512-lxE6nBxBfPcF22ecWLWn54e0+TK09F3/KXDzZO5dkCq7iwaBzrBkmMtfCWp4wjjS7qGKHkqbWelfLjeMcwGaVw==
+  dependencies:
+    "@agora-js/media" "4.22.2"
+    "@agora-js/report" "4.22.2"
+    "@agora-js/shared" "4.22.2"
+    agora-rte-extension "^1.2.4"
+    axios "^1.7.7"
+    formdata-polyfill "^4.0.7"
+    pako "^2.1.0"
+    ua-parser-js "^0.7.34"
+    webrtc-adapter "8.2.0"
+
+agora-rte-extension@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/agora-rte-extension/-/agora-rte-extension-1.2.4.tgz#6ba1742b16191ea9eba69376b067d4b2e0fe9d34"
+  integrity sha512-0ovZz1lbe30QraG1cU+ji7EnQ8aUu+Hf3F+a8xPml3wPOyUQEK6CTdxV9kMecr9t+fIDrGeW7wgJTsM1DQE7Nw==
 
 agora-rtm-react@^1.1.2:
   version "1.1.2"
@@ -1771,6 +1833,14 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
+fetch-blob@^3.1.2:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/fetch-blob/-/fetch-blob-3.2.0.tgz#f09b8d4bbd45adc6f0c20b7e787e793e309dcce9"
+  integrity sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==
+  dependencies:
+    node-domexception "^1.0.0"
+    web-streams-polyfill "^3.0.3"
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"
@@ -1832,6 +1902,13 @@ form-data@^4.0.0:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
+
+formdata-polyfill@^4.0.7:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz#24807c31c9d402e002ab3d8c720144ceb8848423"
+  integrity sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==
+  dependencies:
+    fetch-blob "^3.1.2"
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -2559,6 +2636,11 @@ next@15.0.3:
     "@next/swc-win32-x64-msvc" "15.0.3"
     sharp "^0.33.5"
 
+node-domexception@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
+  integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
+
 npm-run-path@^5.1.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-5.3.0.tgz#e23353d0ebb9317f174e93417e4a4d82d0249e9f"
@@ -2699,6 +2781,11 @@ p-locate@^5.0.0:
   integrity sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==
   dependencies:
     p-limit "^3.0.2"
+
+pako@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-2.1.0.tgz#266cc37f98c7d883545d11335c00fbd4062c9a86"
+  integrity sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==
 
 parent-module@^1.0.0:
   version "1.0.1"
@@ -2977,6 +3064,11 @@ scheduler@0.25.0-rc-66855b96-20241106:
   version "0.25.0-rc-66855b96-20241106"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.25.0-rc-66855b96-20241106.tgz#8bbb728eca4de5a5deca1f18370fbce41aee91d1"
   integrity sha512-HQXp/Mnp/MMRSXMQF7urNFla+gmtXW/Gr1KliuR0iboTit4KvZRY8KYaq5ccCTAOJiUqQh2rE2F3wgUekmgdlA==
+
+sdp@^3.0.2:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/sdp/-/sdp-3.2.0.tgz#8961420552b36663b4d13ddba6f478d1461896a5"
+  integrity sha512-d7wDPgDV3DDiqulJjKiV2865wKsJ34YI+NDREbm+FySq6WuKOikwyNQcm+doLAZ1O6ltdO0SeKle2xMpN3Brgw==
 
 semver@^6.3.1:
   version "6.3.1"
@@ -3340,6 +3432,11 @@ typescript@^5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.6.3.tgz#5f3449e31c9d94febb17de03cc081dd56d81db5b"
   integrity sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==
 
+ua-parser-js@^0.7.34:
+  version "0.7.39"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.39.tgz#c71efb46ebeabc461c4612d22d54f88880fabe7e"
+  integrity sha512-IZ6acm6RhQHNibSt7+c09hhvsKy9WUr4DVbeq9U8o71qxyYtJpQeDxQnMrVqnIFMLcQjHO0I9wgfO2vIahht4w==
+
 unbox-primitive@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/unbox-primitive/-/unbox-primitive-1.0.2.tgz#29032021057d5e6cdbd08c5129c226dff8ed6f9e"
@@ -3373,6 +3470,18 @@ uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+web-streams-polyfill@^3.0.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz#2073b91a2fdb1fbfbd401e7de0ac9f8214cecb4b"
+  integrity sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==
+
+webrtc-adapter@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-8.2.0.tgz#566220c95d707017bbefbb555d6e2467dd1b691e"
+  integrity sha512-umxCMgedPAVq4Pe/jl3xmelLXLn4XZWFEMR5Iipb5wJ+k1xMX0yC4ZY9CueZUU1MjapFxai1tFGE7R/kotH6Ww==
+  dependencies:
+    sdp "^3.0.2"
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"

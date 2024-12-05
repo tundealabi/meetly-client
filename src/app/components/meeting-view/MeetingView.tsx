@@ -6,18 +6,21 @@ import {
   Mic,
   MicOff,
   PhoneAndroidRounded,
+  PresentToAll,
   Videocam,
   VideocamOff
 } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
-import {
+import AgoraRTC, {
   LocalUser,
   useLocalMicrophoneTrack,
   useLocalCameraTrack,
   useJoin,
   usePublish,
   useRemoteUsers,
-  RemoteUser
+  RemoteUser,
+  ILocalVideoTrack,
+  useRTCClient
 } from 'agora-rtc-react';
 import { FC, useState } from 'react';
 import InfoDialog from './InfoDialog';
@@ -47,20 +50,60 @@ const MeetingView: FC<MeetingViewProps> = ({
     token
   });
 
+  const client = useRTCClient();
+
   const [micOn, setMic] = useState(false);
   const [cameraOn, setCamera] = useState(false);
+  const [isSharingScreen, setIsSharingScreen] = useState(false);
   const [infoType, setInfoType] = useState<RoomInfoType>(null);
   const { localMicrophoneTrack } = useLocalMicrophoneTrack(micOn);
   const { localCameraTrack } = useLocalCameraTrack(cameraOn);
+  const [screenTrack, setScreenTrack] = useState<ILocalVideoTrack | null>(null);
 
   usePublish([localMicrophoneTrack, localCameraTrack]);
 
+  console.debug('remoteUsers-before', useRemoteUsers());
+
+  // const remoteUsers = useRemoteUsers().filter((user) => user.uid !== uid);
   const remoteUsers = useRemoteUsers();
 
-  console.debug('remoteUsers', remoteUsers);
+  console.debug('remoteUsers-after', remoteUsers);
 
   const toggleCamera = () => setCamera((prev) => !prev);
   const toggleMicrophone = () => setMic((prev) => !prev);
+  // const toggleScreenShare = () => setIsSharingScreen((prev) => !prev);
+
+  const startScreenShare = async () => {
+    try {
+      const track = await AgoraRTC.createScreenVideoTrack({
+        systemAudio: 'exclude'
+      });
+      setScreenTrack(track as ILocalVideoTrack);
+      await client.publish(track);
+      setIsSharingScreen(true);
+      console.debug('Screen sharing started');
+    } catch (error) {
+      console.error('Error starting screen share:', error);
+    }
+  };
+
+  const stopScreenShare = async () => {
+    if (screenTrack) {
+      await client.unpublish(screenTrack);
+      screenTrack.close();
+      setScreenTrack(null);
+      setIsSharingScreen(false);
+      console.debug('Screen sharing stopped');
+    }
+  };
+
+  const toggleScreenShare = () => {
+    if (isSharingScreen) {
+      stopScreenShare();
+    } else {
+      startScreenShare();
+    }
+  };
 
   return (
     <>
@@ -153,6 +196,9 @@ const MeetingView: FC<MeetingViewProps> = ({
               ) : (
                 <VideocamOff color="secondary" />
               )}
+            </IconButton>
+            <IconButton onClick={toggleScreenShare}>
+              <PresentToAll color={isSharingScreen ? 'warning' : 'secondary'} />
             </IconButton>
             <IconButton>
               <CallEnd color="secondary" />
