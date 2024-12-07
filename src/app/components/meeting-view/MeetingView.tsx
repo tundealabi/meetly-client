@@ -3,9 +3,10 @@
 import { JoinRoomOptions, RoomInfoType } from '@/types';
 import {
   CallEnd,
+  Info,
   Mic,
   MicOff,
-  PhoneAndroidRounded,
+  // PhoneAndroidRounded,
   PresentToAll,
   Videocam,
   VideocamOff
@@ -22,7 +23,7 @@ import AgoraRTC, {
   useClientEvent
 } from 'agora-rtc-react';
 import { FC, useEffect, useState } from 'react';
-import { InfoDialog, UserCard } from '.';
+import { InfoDialog, MeetingDetails, UserCard } from '.';
 import { createClient } from 'agora-rtm-react';
 
 type MeetingViewProps = {
@@ -395,18 +396,20 @@ const MeetingView: FC<MeetingViewProps> = ({
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'block' } }}>
             <IconButton onClick={() => setInfoType('details')}>
-              <PhoneAndroidRounded color="secondary" />
+              <Info color="secondary" />
             </IconButton>
-            <IconButton onClick={() => setInfoType('people')}>
+            {/* <IconButton onClick={() => setInfoType('people')}>
               <PhoneAndroidRounded color="primary" />
             </IconButton>
             <IconButton onClick={() => setInfoType('chat')}>
               <PhoneAndroidRounded color="success" />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Box>
       </Box>
-      <InfoDialog handleClose={() => setInfoType(null)} type={infoType} />
+      <InfoDialog handleClose={() => setInfoType(null)} type={infoType}>
+        {infoType === 'details' ? <MeetingDetails roomId={channel} /> : null}
+      </InfoDialog>
     </>
   );
 };

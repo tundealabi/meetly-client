@@ -1,18 +1,21 @@
 import { RoomInfoType } from '@/types';
-import { IconButton, useMediaQuery, useTheme } from '@mui/material';
+import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 type InfoDialogProps = {
   type: RoomInfoType;
   handleClose: () => void;
 };
 
-const InfoDialog: FC<InfoDialogProps> = ({ handleClose, type }) => {
+const InfoDialog: FC<PropsWithChildren<InfoDialogProps>> = ({
+  children,
+  handleClose,
+  type
+}) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   return (
@@ -36,9 +39,7 @@ const InfoDialog: FC<InfoDialogProps> = ({ handleClose, type }) => {
         <CloseIcon />
       </IconButton>
       <DialogContent>
-        <DialogContentText>
-          You can set my maximum width and whether to adapt or not.
-        </DialogContentText>
+        <Box>{children}</Box>
       </DialogContent>
     </Dialog>
   );
