@@ -14,30 +14,29 @@ const JoinWithCode = () => {
         placeholder="Enter a code"
         size="small"
         sx={{
-            '& .MuiInputBase-root': {
-              color: 'whitesmoke',
+          '& .MuiInputBase-root': {
+            color: 'whitesmoke'
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: '#15c3b5'
             },
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                borderColor: '#15c3b5', 
-              },
-              '&:hover fieldset': {
-                borderColor: '#15c3b58d',
-              },
-              '&.Mui-focused fieldset': {
-                borderColor: '#15c3b532', 
-              },
+            '&:hover fieldset': {
+              borderColor: '#15c3b58d'
             },
-          }}
+            '&.Mui-focused fieldset': {
+              borderColor: '#15c3b532'
+            }
+          }
+        }}
         value={code}
         variant="outlined"
       />
       <Button
         variant="text"
-     
         disabled={!code}
         onClick={() => router.push(`/${code}`)}
-        sx={{ '&.Mui-disabled': { color: '#15e8d8' }}}
+        sx={{ '&.Mui-disabled': { color: '#15e8d8' } }}
       >
         Join
       </Button>
@@ -46,6 +45,5 @@ const JoinWithCode = () => {
 };
 
 export default JoinWithCode;
-
 
 //fix: cursor should be on the join button

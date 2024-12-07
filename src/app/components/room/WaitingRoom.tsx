@@ -100,7 +100,8 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
             alignItems: 'center',
             display: 'flex',
             flexDirection: { xs: 'column', lg: 'row' },
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            rowGap: 10
           }}
         >
           {/* MEDIA */}
@@ -113,7 +114,8 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
             }}
           >
             {/* Render video preview */}
-            {videoTrack && (
+
+            {videoTrack ? (
               <video
                 ref={(ref) => {
                   if (ref) videoTrack.play(ref);
@@ -121,7 +123,21 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
                 autoPlay
                 style={{ width: '100%', height: '100%' }}
               />
+            ) : (
+              <Box
+                sx={{
+                  alignItems: 'center',
+                  backgroundColor: 'black',
+                  display: 'flex',
+                  height: '100%',
+                  justifyContent: 'center',
+                  width: '100%'
+                }}
+              >
+                <Typography>Loading....</Typography>
+              </Box>
             )}
+
             <Box
               sx={{
                 alignItems: 'center',
@@ -143,22 +159,29 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
               >
                 <IconButton
                   onClick={toggleMicrophone}
-                  sx={{ backgroundColor: 'red' }}
+                  sx={{
+                    backgroundColor: '#1f8ef1',
+                    ':hover': { backgroundColor: '#5fa6f5' }
+                  }}
                 >
                   {micOn ? (
-                    <Mic color="secondary" />
+                    <Mic sx={{ color: '#fff' }} />
                   ) : (
-                    <MicOff color="secondary" />
+                    <MicOff sx={{ color: '#fff' }} />
                   )}
                 </IconButton>
                 <IconButton
                   onClick={toggleCamera}
-                  sx={{ backgroundColor: 'red' }}
+                  sx={{
+                    backgroundColor: '#1f8ef1',
+                    ':disabled': { backgroundColor: '#484848' },
+                    ':hover': { backgroundColor: '#5fa6f5' }
+                  }}
                 >
                   {cameraOn ? (
-                    <Videocam color="secondary" />
+                    <Videocam sx={{ color: '#fff' }} />
                   ) : (
-                    <VideocamOff color="secondary" />
+                    <VideocamOff sx={{ color: '#fff' }} />
                   )}
                 </IconButton>
               </Box>
@@ -168,7 +191,7 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
           <Box
             sx={{
               alignItems: 'center',
-              border: '1px solid green',
+              border: '0px solid green',
               display: 'flex',
               flexBasis: '30%',
               flexDirection: 'column',
@@ -187,6 +210,9 @@ const WaitingRoom: FC<WaitingRoomProps> = ({ roomId, setRoomData }) => {
                 sx={{
                   border: '1px solid #635959',
                   '& .MuiInputBase-input': {
+                    color: '#fff'
+                  },
+                  '& label, .Mui-focused': {
                     color: '#fff'
                   }
                 }}

@@ -34,7 +34,11 @@ export type RoomInfo = {
   roomName: string;
 };
 export type Room = RoomInfo & {
-  token: string;
+  profilePicture?: string;
+  rtcToken: string;
+  rtmToken: string;
+  screenShareRtcToken: string;
+  screenShareUid: number;
   uid: number;
   userId: string;
   username: string;
@@ -42,7 +46,10 @@ export type Room = RoomInfo & {
 export type CreatedRoom = Pick<RoomInfo, 'roomName'>;
 export type JoinRoomOptions = {
   channel: string;
-  token: string;
+  rtcToken: string;
+  rtmToken: string;
+  screenShareRtcToken: string;
+  screenShareUid: number;
   uid: number;
 };
 
