@@ -7,6 +7,7 @@ import {
   Mic,
   MicOff,
   // PhoneAndroidRounded,
+  People,
   PresentToAll,
   Videocam,
   VideocamOff
@@ -23,7 +24,7 @@ import AgoraRTC, {
   useClientEvent
 } from 'agora-rtc-react';
 import { FC, useEffect, useState } from 'react';
-import { InfoDialog, MeetingDetails, UserCard } from '.';
+import { InfoDialog, MeetingDetails, MeetingPeople, UserCard } from '.';
 import { createClient } from 'agora-rtm-react';
 
 type MeetingViewProps = {
@@ -48,6 +49,7 @@ const useRtmClient = createClient(process.env.NEXT_PUBLIC_AGORA_APP_ID!);
 const MeetingView: FC<MeetingViewProps> = ({
   joinRoomOptions: {
     channel,
+    host,
     rtcToken,
     rtmToken,
     screenShareRtcToken,
@@ -281,7 +283,7 @@ const MeetingView: FC<MeetingViewProps> = ({
                 isMicOn={micOn}
                 profilePicture={profilePicture ?? ''}
                 uid={uid}
-                username={username}
+                username={`${username} ${uid === host.uid ? '(Host)' : ''}`}
               >
                 <LocalUser
                   audioTrack={localMicrophoneTrack}
@@ -333,7 +335,15 @@ const MeetingView: FC<MeetingViewProps> = ({
           </Box>
         </Box>
 
-        <Box sx={{ border: '0px solid blue', display: 'flex', width: '100%' }}>
+        <Box
+          sx={{
+            alignItems: { xs: 'center' },
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            rowGap: 4,
+            width: '100%'
+          }}
+        >
           <Box
             sx={{
               border: '0px solid green',
@@ -394,9 +404,12 @@ const MeetingView: FC<MeetingViewProps> = ({
               <CallEnd sx={{ color: '#fff' }} />
             </IconButton>
           </Box>
-          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Box sx={{ flex: { xs: 'block', md: 'block' } }}>
             <IconButton onClick={() => setInfoType('details')}>
               <Info color="secondary" />
+            </IconButton>
+            <IconButton onClick={() => setInfoType('people')}>
+              <People color="secondary" />
             </IconButton>
             {/* <IconButton onClick={() => setInfoType('people')}>
               <PhoneAndroidRounded color="primary" />
@@ -409,6 +422,17 @@ const MeetingView: FC<MeetingViewProps> = ({
       </Box>
       <InfoDialog handleClose={() => setInfoType(null)} type={infoType}>
         {infoType === 'details' ? <MeetingDetails roomId={channel} /> : null}
+        {infoType === 'people' ? (
+          <MeetingPeople
+            hostUid={host.uid}
+            localUserHasMicOn={micOn}
+            localUserProfilePicture={profilePicture ?? ''}
+            localUserUid={uid}
+            localUsername={username}
+            remoteUsersDetailsMap={remoteUsersNameMap}
+            usersMediaTypeStatusMap={usersMediaTypeStatusMap}
+          />
+        ) : null}
       </InfoDialog>
     </>
   );

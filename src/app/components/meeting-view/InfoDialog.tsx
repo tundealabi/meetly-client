@@ -39,7 +39,7 @@ const InfoDialog: FC<PropsWithChildren<InfoDialogProps>> = ({
         <CloseIcon />
       </IconButton>
       <DialogContent>
-        <Box>{children}</Box>
+        <Box sx={{ width: 'full' }}>{children}</Box>
       </DialogContent>
     </Dialog>
   );

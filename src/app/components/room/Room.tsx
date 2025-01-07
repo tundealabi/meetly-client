@@ -25,6 +25,7 @@ const Room: FC<RoomProps> = ({ data, roomId }) => {
         <MeetingView
           joinRoomOptions={{
             channel: state.roomName,
+            host: { uid: state.createdBy.uid },
             rtcToken: state.rtcToken,
             rtmToken: state.rtmToken,
             screenShareRtcToken: state.screenShareRtcToken,

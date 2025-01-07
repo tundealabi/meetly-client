@@ -30,7 +30,7 @@ export type User = {
 
 //  ROOM
 export type RoomInfo = {
-  createdBy: { _id: string; username: string };
+  createdBy: { _id: string; uid: number; username: string };
   roomName: string;
 };
 export type Room = RoomInfo & {
@@ -46,6 +46,7 @@ export type Room = RoomInfo & {
 export type CreatedRoom = Pick<RoomInfo, 'roomName'>;
 export type JoinRoomOptions = {
   channel: string;
+  host: { uid: number };
   rtcToken: string;
   rtmToken: string;
   screenShareRtcToken: string;
